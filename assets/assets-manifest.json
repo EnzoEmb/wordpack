@@ -1,0 +1,7 @@
+{
+  "app.js": "js/app.bundle.js",
+  "css.js": "js/css.bundle.js",
+  "css/app.scss": "css/app.min.css",
+  "js/vendors-node_modules_jquery_dist_jquery_js.bundle.js": "js/vendors-node_modules_jquery_dist_jquery_js.bundle.js",
+  "page_1.js": "js/page_1.bundle.js"
+}
