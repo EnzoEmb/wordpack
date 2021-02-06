@@ -1,10 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ChunksWebpackPlugin = require('chunks-webpack-plugin');
-const autoprefixer = require("autoprefixer");
-const CopyPlugin = require("copy-webpack-plugin");
+// const autoprefixer = require("autoprefixer");
+// const CopyPlugin = require("copy-webpack-plugin");
 
 // const ImageminPlugin = require('imagemin-webpack-plugin').default
 // const imageminMozjpeg = require('imagemin-mozjpeg')
@@ -27,7 +27,7 @@ module.exports = {
 
     // entry file(s)
     entry: {
-        // css: ['./src/css/app.scss'],
+        css: ['./src/css/app.scss'],
         app: ['./src/js/app.js'],
         page_1: ['./src/js/page_1.js'],
         page_2: ['./src/js/page_2.js'],

@@ -8,7 +8,8 @@
     "dev": "webpack",
     "watch": "webpack --watch",
     "prod": "cross-env NODE_ENV=production webpack ",
-    "images": "node image.config.js"
+    "images": "node image.config.js",
+    "imagesw": "node image.config.js"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
+    "chokidar": "^3.5.1",
+    "chokidar-cli": "^2.1.0",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-pngquant": "^6.0.1",
     "jquery": "^3.5.1",

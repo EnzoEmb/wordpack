@@ -39,7 +39,6 @@ const sharp = require('sharp');
 
 
 const files = fs.readdirSync('./src/img')
-
 const convert = (dir, name) => {
   const fullname = dir + '/' + name
   const extension = name.substr(name.lastIndexOf('.') + 1);
@@ -59,10 +58,13 @@ const convert = (dir, name) => {
   // Optimize same format
   i.toFormat(extension, { quality: 50 })
   i.toFile('./assets/img/' + name)
-
+  .then(() => console.log('Optimized', fullname))
+  .catch(e => console.log('Failed converting', fullname, e, 'skipping...'))
 
 
 }
+
+
 
 const promises = files.map(name => convert('./src/img/', name))
 
