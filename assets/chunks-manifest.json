@@ -1,0 +1,28 @@
+{
+  "app": {
+    "styles": [],
+    "scripts": [
+      "./js/755.bundle.js",
+      "./js/286.bundle.js",
+      "./js/app.bundle.js"
+    ]
+  },
+  "page_1": {
+    "styles": [],
+    "scripts": [
+      "./js/755.bundle.js",
+      "./js/329.bundle.js",
+      "./js/286.bundle.js",
+      "./js/page_1.bundle.js"
+    ]
+  },
+  "page_2": {
+    "styles": [],
+    "scripts": [
+      "./js/329.bundle.js",
+      "./js/268.bundle.js",
+      "./js/286.bundle.js",
+      "./js/page_2.bundle.js"
+    ]
+  }
+}

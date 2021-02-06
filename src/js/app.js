@@ -1,5 +1,4 @@
-import {hola} from './test';
-
+import {hola} from './myfunction';
 import $ from 'jquery'
 
 hola();

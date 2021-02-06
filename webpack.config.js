@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const WebpackAssetsManifest = require('webpack-assets-manifest');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 const autoprefixer = require("autoprefixer");
 
 module.exports = {
@@ -10,24 +11,29 @@ module.exports = {
 
     // entry file(s)
     entry: {
-        css: ['./src/css/app.scss'],
+        // css: ['./src/css/app.scss'],
         app: ['./src/js/app.js'],
-        page_1: ['./src/js/page2.js'],
+        page_1: ['./src/js/page_1.js'],
+        page_2: ['./src/js/page_2.js', 'swiper'],
     },
 
     // output file(s) and chunks
     output: {
         path: path.resolve(__dirname, 'assets'),
         filename: 'js/[name].bundle.js',
-        chunkFilename: 'js/[name].common.js',
-        // publicPath: "./"
+        // chunkFilename: 'js/[name].common.js',
+        publicPath: "./"
     },
 
 
     //plugins
     plugins: [
         new CleanWebpackPlugin(),
-        new WebpackAssetsManifest(),
+        new BundleAnalyzerPlugin(),
+        new ChunksWebpackPlugin({
+            generateChunksManifest: true,
+            generateChunksFiles: false,
+        })
     ],
 
 
@@ -46,13 +52,13 @@ module.exports = {
                         ]
                     }
                 }
-            },  {
+            }, {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
                     {
                         loader: 'file-loader',
-                        options: { outputPath: 'css/', name: '[name].min.css'}
+                        options: { outputPath: 'css/', name: '[name].min.css' }
                     },
                     "postcss-loader",
                     'sass-loader'
@@ -66,8 +72,20 @@ module.exports = {
     // optimization
     optimization: {
         splitChunks: {
+            // name: '[name].chunks',
+            // name: false,
             chunks: 'all',
-            minChunks: 2
+            minChunks: 1,
+            minSize: 0,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all',
+                    // name: 'vendor',
+                    // enforce: true,
+                    // minChunks: 3
+                }
+            }
         },
     },
 }
