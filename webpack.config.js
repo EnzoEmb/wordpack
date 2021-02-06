@@ -4,6 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 const autoprefixer = require("autoprefixer");
+const CopyPlugin = require("copy-webpack-plugin");
+
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const imageminMozjpeg = require('imagemin-mozjpeg')
+// const imageminWebp = require('imagemin-webp');
+const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
+
+
 
 module.exports = {
     // webpack optimization mode
@@ -14,7 +22,7 @@ module.exports = {
         // css: ['./src/css/app.scss'],
         app: ['./src/js/app.js'],
         page_1: ['./src/js/page_1.js'],
-        page_2: ['./src/js/page_2.js', 'swiper'],
+        page_2: ['./src/js/page_2.js'],
     },
 
     // output file(s) and chunks
@@ -29,13 +37,42 @@ module.exports = {
     //plugins
     plugins: [
         new CleanWebpackPlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new ChunksWebpackPlugin({
             generateChunksManifest: true,
             generateChunksFiles: false,
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "./src/img/",
+                    to: "./img",
+                },
+            ],
+        }),
+        new ImageminWebpWebpackPlugin({
+            options: {
+                quality: 1
+            }
+        }),
+        new ImageminPlugin({
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            onlyUseIfSmaller: true,
+            cacheFolder: path.resolve('./cache-images'),
+            optipng: {
+                optimizationLevel: 9
+            },
+            pngquant: {
+                quality: '70'
+            },
+            plugins: [
+                imageminMozjpeg({
+                    quality: 50,
+                    progressive: true
+                }),
+            ]
+        }),
     ],
-
 
 
     // module/loaders configuration

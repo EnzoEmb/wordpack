@@ -1,1 +1,0 @@
-(self.webpackChunkwordpack=self.webpackChunkwordpack||[]).push([[286],{286:(o,l,c)=>{"use strict";function e(){console.log("hola"),console.log("hola"),console.log("hola"),console.log("hola"),console.log("hola"),console.log("hola")}c.d(l,{F:()=>e})}}]);
