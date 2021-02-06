@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-
+const autoprefixer = require("autoprefixer");
 
 module.exports = {
     // webpack optimization mode
@@ -54,6 +54,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: { outputPath: 'css/', name: '[name].min.css'}
                     },
+                    "postcss-loader",
                     'sass-loader'
                 ]
             }

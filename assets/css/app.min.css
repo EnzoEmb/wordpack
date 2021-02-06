@@ -1,2 +1,6 @@
 body {
-  background: linear-gradient(#e98a00, #f5aa2f); }
+  background: linear-gradient(#e98a00, #f5aa2f);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
