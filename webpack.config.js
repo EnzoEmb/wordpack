@@ -11,15 +11,15 @@ const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 // const imageminWebp = require('imagemin-webp');
 // const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
-const imagemin = require( "imagemin" )
-const webp = require( "imagemin-webp" )
+// const imagemin = require( "imagemin" )
+const webp = require("imagemin-webp")
 
-imagemin( ['src/img/*.{jpg,png,,svg,jpeg}'], {
-    destination: 'assets/img',
-    plugins: [
-        webp( { quality: 60 } )
-    ]
-} )
+// imagemin( ['src/img/*.{jpg,png,,svg,jpeg}'], {
+//     destination: 'assets/img',
+//     plugins: [
+//         webp( { quality: 60 } )
+//     ]
+// } )
 
 module.exports = {
     // webpack optimization mode
@@ -44,7 +44,9 @@ module.exports = {
 
     //plugins
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: ['**/*', '!img/**/*'],
+        }),
         // new BundleAnalyzerPlugin(),
         new ChunksWebpackPlugin({
             generateChunksManifest: true,

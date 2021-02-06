@@ -8,7 +8,8 @@
     "dev": "webpack",
     "watch": "webpack --watch",
     "prod": "cross-env NODE_ENV=production webpack ",
-    "imagesw": "node image.config.js"
+    "imagesw": "node image.config.js",
+    "tester": "npm-run-all --parallel watch imagesw"
   },
   "repository": {
     "type": "git",

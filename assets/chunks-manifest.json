@@ -1,4 +1,10 @@
 {
+  "css": {
+    "styles": [],
+    "scripts": [
+      "./js/css.bundle.js"
+    ]
+  },
   "app": {
     "styles": [],
     "scripts": [
