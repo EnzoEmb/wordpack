@@ -6,12 +6,20 @@ const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 const autoprefixer = require("autoprefixer");
 const CopyPlugin = require("copy-webpack-plugin");
 
-const ImageminPlugin = require('imagemin-webpack-plugin').default
-const imageminMozjpeg = require('imagemin-mozjpeg')
+// const ImageminPlugin = require('imagemin-webpack-plugin').default
+// const imageminMozjpeg = require('imagemin-mozjpeg')
 // const imageminWebp = require('imagemin-webp');
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
+// const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
+const imagemin = require( "imagemin" )
+const webp = require( "imagemin-webp" )
 
+imagemin( ['src/img/*.{jpg,png,,svg,jpeg}'], {
+    destination: 'assets/img',
+    plugins: [
+        webp( { quality: 60 } )
+    ]
+} )
 
 module.exports = {
     // webpack optimization mode
@@ -42,36 +50,36 @@ module.exports = {
             generateChunksManifest: true,
             generateChunksFiles: false,
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: "./src/img/",
-                    to: "./img",
-                },
-            ],
-        }),
-        new ImageminWebpWebpackPlugin({
-            options: {
-                quality: 1
-            }
-        }),
-        new ImageminPlugin({
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            onlyUseIfSmaller: true,
-            cacheFolder: path.resolve('./cache-images'),
-            optipng: {
-                optimizationLevel: 9
-            },
-            pngquant: {
-                quality: '70'
-            },
-            plugins: [
-                imageminMozjpeg({
-                    quality: 50,
-                    progressive: true
-                }),
-            ]
-        }),
+        // new CopyPlugin({
+        //     patterns: [
+        //         {
+        //             from: "./src/img/",
+        //             to: "./img",
+        //         },
+        //     ],
+        // }),
+        // new ImageminWebpWebpackPlugin({
+        //     options: {
+        //         quality: 1
+        //     }
+        // }),
+        // new ImageminPlugin({
+        //     test: /\.(jpe?g|png|gif|svg)$/i,
+        //     onlyUseIfSmaller: true,
+        //     cacheFolder: path.resolve('./cache-images'),
+        //     optipng: {
+        //         optimizationLevel: 9
+        //     },
+        //     pngquant: {
+        //         quality: '70'
+        //     },
+        //     plugins: [
+        //         imageminMozjpeg({
+        //             quality: 50,
+        //             progressive: true
+        //         }),
+        //     ]
+        // }),
     ],
 
 
