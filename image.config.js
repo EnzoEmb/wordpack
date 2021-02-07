@@ -5,9 +5,10 @@ const chokidar = require('chokidar');
 const IMAGES_FOLDER = './src/img/';
 
 chokidar.watch(IMAGES_FOLDER).on('add', (event, path) => {
-  console.log(event);
   optimizeImage(event);
 });
+
+
 
 chokidar.watch(IMAGES_FOLDER).on('unlink', (event, path) => {
 
@@ -18,7 +19,7 @@ chokidar.watch(IMAGES_FOLDER).on('unlink', (event, path) => {
   // fs.unlinkSync('./assets/img/'+file);
   // fs.unlinkSync('./assets/img/'+filename_without_extension+'webp');
 
-  fs.unlink('./assets/img/'+file, (err) => {
+  fs.unlink('./assets/img/' + file, (err) => {
     if (err) {
       console.error(err)
       return
@@ -27,7 +28,7 @@ chokidar.watch(IMAGES_FOLDER).on('unlink', (event, path) => {
     console.log('Removed', file);
   })
 
-  fs.unlink('./assets/img/'+filename_without_extension+'.webp', (err) => {
+  fs.unlink('./assets/img/' + filename_without_extension + '.webp', (err) => {
     if (err) {
       console.error(err)
       return
@@ -43,63 +44,39 @@ chokidar.watch(IMAGES_FOLDER).on('unlink', (event, path) => {
 
 function optimizeImage(path) {
 
-  const file = path.substring(path.lastIndexOf('\\') + 1);
-  const extension = file.substr(file.lastIndexOf('.') + 1);
-  const filename_without_extension = file.split('.').slice(0, -1).join('.')
+  const file = path.substring(path.lastIndexOf('\\') + 1); // my_image.png
+  const extension = file.substr(file.lastIndexOf('.') + 1);  // .png
+  const filename_without_extension = file.split('.').slice(0, -1).join('.')  // my_image
+  const file_without_extension = path.replace(/\\/g, "/").replace("src/img/", "").split('.').slice(0, -1).join('.') // subfolder\my_image
+  const file_with_folder = path.replace(/\\/g, "/").replace("src/img/", "") // subfolder\my_image.png
+  const folder = file_with_folder.split('/').slice(0,-1).join() // subfolder/
 
+  // console.log('file', file)
+  // console.log('path', path)
+  // console.log('file_without_extension', file_without_extension)
+  // console.log('file_with_folder', file_with_folder)
+  // console.log('folder', folder)
+  const i = sharp(fs.readFileSync(path));
 
-  const i = sharp(fs.readFileSync(IMAGES_FOLDER+file));
-  // return i.toFile('./assets/img/' + name + '.webp')
+  // create folder if dont exists
+  if (!fs.existsSync('./assets/img/'+folder)) {
+    fs.mkdirSync('./assets/img/'+folder);
+  }
 
+  
   // Convert to .webp
   i.toFormat('webp', { quality: 50 })
-  i.toFile('./assets/img/' + filename_without_extension + '.webp')
+  i.toFile('./assets/img/' + file_without_extension + '.webp')
     .then(() => console.log('Converted', file, 'to WEBP'))
     .catch(e => console.log('Failed converting', file, e, 'skipping...'))
 
 
   // Optimize same format
   i.toFormat(extension, { quality: 50 })
-  i.toFile('./assets/img/' + file)
+  i.toFile('./assets/img/' + file_with_folder)
     .then(() => console.log('Optimized', file))
     .catch(e => console.log('Failed converting', file, e, 'skipping...'))
 
 
 
 }
-
-
-
-// const files = fs.readdirSync('./src/img')
-// const convert = (dir, name) => {
-//   const fullname = dir + '/' + name
-//   const extension = name.substr(name.lastIndexOf('.') + 1);
-//   const fullname_without_extension = name.split('.').slice(0, -1).join('.')
-
-
-//   const i = sharp(fs.readFileSync(fullname));
-//   // return i.toFile('./assets/img/' + name + '.webp')
-
-//   // Convert to .webp
-//   i.toFormat('webp', { quality: 50 })
-//   i.toFile('./assets/img/' + fullname_without_extension + '.webp')
-//     .then(() => console.log('Converted', fullname, 'to WEBP'))
-//     .catch(e => console.log('Failed converting', fullname, e, 'skipping...'))
-
-
-//   // Optimize same format
-//   i.toFormat(extension, { quality: 50 })
-//   i.toFile('./assets/img/' + name)
-//   .then(() => console.log('Optimized', fullname))
-//   .catch(e => console.log('Failed converting', fullname, e, 'skipping...'))
-
-
-// }
-
-
-
-// const promises = files.map(name => convert('./src/img/', name))
-
-// Promise.all(promises)
-//   .then(() => console.log('Done'))
-//   .catch(e => console.error(e));

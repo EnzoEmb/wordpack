@@ -30,6 +30,7 @@ npm run prod
 
 #### To do
 Extract critical CSS
+ZIP theme command
 
 
 ### Guide
