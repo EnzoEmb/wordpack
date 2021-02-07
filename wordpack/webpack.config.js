@@ -51,18 +51,19 @@ module.exports = {
                         ]
                     }
                 }
-            }, {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: { outputPath: 'css/', name: '[name].min.css' }
-                    },
-                    "postcss-loader",
-                    'sass-loader'
-                ]
-            }
+            },
+            // {
+            //     test: /\.scss$/,
+            //     exclude: /node_modules/,
+            //     use: [
+            //         {
+            //             loader: 'file-loader',
+            //             options: { outputPath: 'css/', name: '[name].min.css' }
+            //         },
+            //         "postcss-loader",
+            //         'sass-loader'
+            //     ]
+            // }
         ]
     },
 

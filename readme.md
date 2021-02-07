@@ -30,6 +30,9 @@ npm run prod
 
 ### Guide
 <details>
-  <summary>How to enqueue scripts</summary>
+  <summary>How to enqueue scripts?</summary>
   To enqueue scripts, create an entry on webpack.config.js and then enqueue it on functions.php using the wordpack_load_chunk function with the same name as the entry, be sure to use a conditional when enqueuing it.
+</details>
+<details>
+  <summary>How does the image optimization works?</summary>
 </details>

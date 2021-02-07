@@ -12,6 +12,11 @@
 - [ ] IMAGES: Remove unused images from images
 - [ ] IMAGES: Remove unlinked folders
 - [ ] IMAGES: Dont process if image already exists
+- [ ] WEBPACK: esLint
+- [ ] WEBPACK: clean unused packages
+- [ ] CSS: style lint
+- [ ] CSS: autoprefix
+- [ ] browsersync
 
 # FUTURE
 - [ ] IMAGES: Resize images
