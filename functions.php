@@ -1,6 +1,5 @@
 <?php 
 include_once "core/wordpack.php";
-include_once "core/wordpack-functions.php";
 
 
 

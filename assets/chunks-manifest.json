@@ -8,7 +8,6 @@
   "app": {
     "styles": [],
     "scripts": [
-      "./js/755.bundle.js",
       "./js/286.bundle.js",
       "./js/app.bundle.js"
     ]
@@ -16,8 +15,7 @@
   "page_1": {
     "styles": [],
     "scripts": [
-      "./js/755.bundle.js",
-      "./js/329.bundle.js",
+      "./js/534.bundle.js",
       "./js/286.bundle.js",
       "./js/page_1.bundle.js"
     ]
