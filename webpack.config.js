@@ -28,7 +28,7 @@ module.exports = {
     //plugins
     plugins: [
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['**/*', '!img/**/*'],
+            cleanOnceBeforeBuildPatterns: ['**/*', '!img'],
         }),
         // new BundleAnalyzerPlugin(),
         new ChunksWebpackPlugin({

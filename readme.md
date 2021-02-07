@@ -17,7 +17,7 @@ npm run prod
 ```
 
 ### Features
-📦 Only serve the JS needed per page<br>
+📦 Only serve the JS needed per page using webpack split chunks<br>
 🧦 Put JS scripts in footer and defer<br>
 📂 Optimize image sizes<br>
 🔩 Convert theme images to .webp<br>
@@ -35,5 +35,5 @@ Extract critical CSS
 ### Guide
 <details>
   <summary>How to enqueue scripts</summary>
-  To enqueue scripts, create your script with a custom name in webpack.config.json <b>entry array</b> , and then add it to enqueue in functions.php "add_theme_assets" function using the "wordpack_load_chunk" function passing the name you choose as parameter. Be sure to use a conditional like is_home() or is_page()
+  To enqueue scripts, create an entry on webpack.config.js and then enqueue it on functions.php using the wordpack_load_chunk function with the same name as the entry, be sure to use a conditional when enqueuing it.
 </details>
