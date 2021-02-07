@@ -12,7 +12,7 @@ const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 // const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
 // const imagemin = require( "imagemin" )
-const webp = require("imagemin-webp")
+// const webp = require("imagemin-webp")
 
 // imagemin( ['src/img/*.{jpg,png,,svg,jpeg}'], {
 //     destination: 'assets/img',
