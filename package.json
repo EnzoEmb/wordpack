@@ -1,8 +1,8 @@
 {
   "name": "wordpack",
   "version": "1.0.0",
-  "description": "a wordpress theme boilerplate with webpacj",
-  "main": "assets/src/js/index.js",
+  "description": "a wordpress theme boilerplate with webpack",
+  "main": "src/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
@@ -43,6 +43,7 @@
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^5.0.0",
+    "puppeteer": "^7.0.1",
     "sass-loader": "^11.0.0",
     "sharp": "^0.27.1",
     "webpack": "^5.21.1",

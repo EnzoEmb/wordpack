@@ -12,9 +12,6 @@ Wordpress Theme Boilerplate using webpack
 # Watch js and assets
 npm run watch
 
-# Build assets
-npm run dev
-
 # Build assets for production
 npm run prod
 ```
