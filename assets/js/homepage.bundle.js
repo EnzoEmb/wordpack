@@ -10,13 +10,13 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/app.js":
-/*!***********************!*\
-  !*** ./src/js/app.js ***!
-  \***********************/
+/***/ "./src/js/homepage.js":
+/*!****************************!*\
+  !*** ./src/js/homepage.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _myfunction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./myfunction */ \"./src/js/myfunction.js\");\n // import $ from 'jquery'\n\n(0,_myfunction__WEBPACK_IMPORTED_MODULE_0__.hola)(); // $('body').append('<h1>hola</h1>')\n\nvar container = document.getElementById(\"container\");\nvar content = document.createElement(\"span\");\ncontent.style.color = \"red\";\ncontent.innerHTML = \"Hello\";\ncontainer.appendChild(content);\n\n//# sourceURL=webpack://wordpack/./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\njquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({\n  type: \"POST\",\n  url: AJAX_URL,\n  data: {\n    action: 'MY_AJAX_ACTION',\n    nonce_data: MY_AJAX_NAME\n  },\n  success: function success(data) {\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').append(data);\n  }\n});\n\n//# sourceURL=webpack://wordpack/./src/js/homepage.js?");
 
 /***/ })
 
@@ -39,7 +39,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _myf
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -52,6 +52,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _myf
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {};
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -88,11 +100,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _myf
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"app": 0
+/******/ 			"homepage": 0
 /******/ 		};
 /******/ 		
 /******/ 		var deferredModules = [
-/******/ 			["./src/js/app.js","src_js_myfunction_js"]
+/******/ 			["./src/js/homepage.js","vendor-node_modules_jquery_dist_jquery_js"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		

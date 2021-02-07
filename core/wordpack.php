@@ -19,6 +19,7 @@ add_action( 'init', 'wordpack_disable_emojis' );
 
 
 
+
 /**
  * 
  * Disable wp-embed.js
@@ -27,6 +28,41 @@ function wordpack_disable_embed_js(){
   wp_deregister_script( 'wp-embed' );
 }
 add_action( 'wp_footer', 'wordpack_disable_embed_js' );
+
+
+
+
+/**
+ * 
+ * Defer scripts
+ */
+function wordpack_defer_scripts($tag, $handle) {
+  $exclude = [];
+  if(!in_array($handle, $exclude)){
+    $tag = str_replace(' src', ' defer src', $tag);
+  }
+  return $tag;
+
+}
+add_filter('script_loader_tag', 'wordpack_defer_scripts', 10, 2);
+
+
+
+
+/**
+ * 
+ * Async styles
+ */
+function wordpack_async_styles($tag, $handle) {
+  $include = ["main"];
+  if(in_array($handle, $include)){
+    $tag = str_replace(" media='all'", ' media="print" onload="this.media=\'all\'" ', $tag);
+  }
+  return $tag;
+  
+}
+add_filter('style_loader_tag', 'wordpack_async_styles', 10, 2);
+
 
 
 
@@ -56,14 +92,17 @@ function wordpack_load_chunk($chunk_name){
 
 /**
  * 
- * Defer scripts
+ * Register inline script w/ ajax nonce
  */
-function wordpack_defer_scripts($tag, $handle) {
-    $exclude = [];
-    if(!in_array($handle, $exclude)){
-      $tag = str_replace(' src', ' defer src', $tag);
-    }
-    return $tag;
+function wordpack_ajax($ajax_name, $key){
+  
+  $script_name = uniqid();
+	wp_register_script( $script_name, '' );
+	wp_enqueue_script( $script_name );
+	wp_add_inline_script( $script_name, 'const '.$ajax_name.' = "'.wp_create_nonce('MY_NONCE_KEY').'"');
 
+
+	// wp_register_script( 'my-ajax-nonce-script', '' );
+	// wp_enqueue_script( 'my-ajax-nonce-script' );
+	// wp_add_inline_script( 'my-ajax-nonce-script', 'const MY_ACTION_NONCE = "'.wp_create_nonce('MY_NONCE_KEY').'"');
 }
-add_filter('script_loader_tag', 'wordpack_defer_scripts', 10, 2);

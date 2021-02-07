@@ -27,7 +27,9 @@ npm run prod
 💄 Compile and autoprefix SASS<br>
 📑 Clean wordpress scripts and emoji tags<br>
 🥞 THEMEPATH and AJAX_URL variables<br>
-🍬 Clean and editable structure
+🍬 Clean and editable structure<br>
+🧩 Example of secure Ajax with nonce
+🎃 Cache bust script and styles enqueued
 
 #### To do
-🥞 Example AJAX
+Extract critical Css

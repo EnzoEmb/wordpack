@@ -31,6 +31,7 @@ module.exports = {
         app: ['./src/js/app.js'],
         page_1: ['./src/js/page_1.js'],
         page_2: ['./src/js/page_2.js'],
+        homepage: ['./src/js/homepage.js']
     },
 
     // output file(s) and chunks
