@@ -5,6 +5,7 @@ const chokidar = require('chokidar');
 const IMAGES_FOLDER = './src/img/';
 
 chokidar.watch(IMAGES_FOLDER).on('add', (event, path) => {
+  console.log(event);
   optimizeImage(event);
 });
 

@@ -1,3 +1,3 @@
 <?php get_header(); ?>
-<div id="container"></div>
+<div id="container">asdasd</div>
 <?php get_footer(); ?>
