@@ -9,7 +9,7 @@ Wordpress Theme Boilerplate using webpack
 
 ###  Tasks
 ``` bash
-# Watch js and assets
+# Watch assets
 npm run watch
 
 # Build assets for production
@@ -27,11 +27,6 @@ npm run prod
 🍬 Clean and editable structure<br>
 🧩 Example of secure Ajax with nonce<br>
 🎃 Cache bust script and styles enqueued<br>
-
-#### To do
-Extract critical CSS
-ZIP theme command
-
 
 ### Guide
 <details>

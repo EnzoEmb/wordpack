@@ -2,14 +2,21 @@
   "name": "wordpack",
   "version": "1.0.0",
   "description": "a wordpress theme boilerplate with webpack",
-  "main": "src/js/index.js",
+  "main": "src/js/homepage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack",
-    "watch-webpack": "webpack --watch",
-    "watch-images": "node image.config.js",
-    "watch": "npm-run-all --parallel watch-webpack watch-images",
-    "prod": "cross-env NODE_ENV=production webpack "
+
+    "watch:webpack": "webpack --watch --config ./wordpack/webpack.config.js",
+    "watch:images": "node ./wordpack/image.config.js",
+    "watch": "npm-run-all --parallel watch:webpack watch:images",
+
+    "prod": "npm-run-all --parallel prod:js prod:css prod:images",
+    "prod:js": "cross-env NODE_ENV=production webpack --config ./wordpack/webpack.config.js",
+    "prod:css": "",
+    "prod:images": "",
+
+    "critical:css": "",
+    "zip:theme": ""
   },
   "repository": {
     "type": "git",

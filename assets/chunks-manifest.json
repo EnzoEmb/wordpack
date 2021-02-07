@@ -2,37 +2,31 @@
   "css": {
     "styles": [],
     "scripts": [
-      "./js/css.bundle.js"
-    ]
-  },
-  "app": {
-    "styles": [],
-    "scripts": [
-      "./js/286.bundle.js",
-      "./js/app.bundle.js"
-    ]
-  },
-  "page_1": {
-    "styles": [],
-    "scripts": [
-      "./js/755.bundle.js",
-      "./js/329.bundle.js",
-      "./js/286.bundle.js",
-      "./js/page_1.bundle.js"
-    ]
-  },
-  "page_2": {
-    "styles": [],
-    "scripts": [
-      "./js/286.bundle.js",
-      "./js/page_2.bundle.js"
+      "../js/css.bundle.js"
     ]
   },
   "homepage": {
     "styles": [],
     "scripts": [
-      "./js/755.bundle.js",
-      "./js/homepage.bundle.js"
+      "../js/755.bundle.js",
+      "../js/286.bundle.js",
+      "../js/homepage.bundle.js"
+    ]
+  },
+  "page_1": {
+    "styles": [],
+    "scripts": [
+      "../js/755.bundle.js",
+      "../js/329.bundle.js",
+      "../js/286.bundle.js",
+      "../js/page_1.bundle.js"
+    ]
+  },
+  "page_2": {
+    "styles": [],
+    "scripts": [
+      "../js/286.bundle.js",
+      "../js/page_2.bundle.js"
     ]
   }
 }

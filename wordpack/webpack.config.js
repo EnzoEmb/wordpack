@@ -9,19 +9,18 @@ module.exports = {
 
     // entry file(s)
     entry: {
-        css: ['./src/css/app.scss'],
-        app: ['./src/js/app.js'],
-        page_1: ['./src/js/page_1.js'],
-        page_2: ['./src/js/page_2.js'],
-        homepage: ['./src/js/homepage.js']
+        // css: [ path.resolve(__dirname, '../src/css/app.scss')],
+        homepage: [ path.resolve(__dirname, '../src/js/homepage.js')],
+        page_1: [ path.resolve(__dirname, '../src/js/page_1.js')],
+        page_2: [ path.resolve(__dirname, '../src/js/page_2.js')],
     },
 
     // output file(s) and chunks
     output: {
-        path: path.resolve(__dirname, 'assets'),
+        path: path.resolve(__dirname, '../assets'),
         filename: 'js/[name].bundle.js',
         // chunkFilename: 'js/[name].common.js',
-        publicPath: "./"
+        publicPath: "../"
     },
 
 
