@@ -7,13 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
 
     "watch:webpack": "webpack --watch --config ./wordpack/webpack.config.js",
-    "watch:images": "node ./wordpack/image.config.js",
+    "watch:images": "node ./wordpack/image.config.js --watch",
     "watch": "npm-run-all --parallel watch:webpack watch:images",
 
     "prod": "npm-run-all --parallel prod:js prod:css prod:images",
     "prod:js": "cross-env NODE_ENV=production webpack --config ./wordpack/webpack.config.js",
     "prod:css": "",
-    "prod:images": "",
+    "prod:images": "node ./wordpack/image.config.js",
 
     "critical:css": "",
     "zip:theme": ""

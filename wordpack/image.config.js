@@ -5,17 +5,27 @@ const chokidar = require('chokidar');
 const SRC_FOLDER = './src/img/';
 const OUTPUT_FOLDER = './assets/img/';
 
-chokidar.watch(SRC_FOLDER).on('add', (event, path) => {
-  optimizeImage(event);
-});
+// check if has --watch args
+var IS_WATCH = false;
+const args = process.argv;
+if (args.includes('--watch')) {
+  IS_WATCH = true;
+}
 
 
+if (IS_WATCH) {
+  chokidar.watch(SRC_FOLDER).on('add', (event, path) => {
+    optimizeImage(event);
+  });
 
-chokidar.watch(SRC_FOLDER).on('unlink', (event, path) => {
+  chokidar.watch(SRC_FOLDER).on('unlink', (event, path) => {
+    removeImage(event);
+  });
+}else{
 
-  removeImage(event);
+  // process all images from src without chokidar
 
-});
+}
 
 
 
@@ -90,7 +100,7 @@ function removeImage(path) {
       return
     }
 
-    console.log('Removed', file);
+    console.log('Removed', filename_without_extension + '.webp');
   })
 
 }

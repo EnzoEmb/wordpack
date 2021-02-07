@@ -1,12 +1,17 @@
 
 # BACKLOG
 
-- [-] Move config files to wordpack folder
+- [x] Move config files to wordpack folder
 - [ ] Create 404 design
 - [ ] Separate sass build from webpack
-- [ ] Build command without watch of images
 - [ ] Extract critical css into a folder and inject them if they exists w/ php
 - [ ] Zip theme command
-- [ ] Chalkify images config
-- [ ] Fix subfolders images config
-- [ ] Remove unused images from images config
+- [x] IMAGES: Fix mirror subfolders images
+- [ ] IMAGES: Build command without watch of images
+- [ ] IMAGES: Chalkify images
+- [ ] IMAGES: Remove unused images from images
+- [ ] IMAGES: Remove unlinked folders
+- [ ] IMAGES: Dont process if image already exists
+
+# FUTURE
+- [ ] IMAGES: Resize images
