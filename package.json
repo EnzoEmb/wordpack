@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
-    "watch": "webpack --watch",
-    "prod": "cross-env NODE_ENV=production webpack ",
-    "imagesw": "node image.config.js",
-    "tester": "npm-run-all --parallel watch imagesw"
+    "watch-webpack": "webpack --watch",
+    "watch-images": "node image.config.js",
+    "watch": "npm-run-all --parallel watch imagesw",
+    "prod": "cross-env NODE_ENV=production webpack "
   },
   "repository": {
     "type": "git",
