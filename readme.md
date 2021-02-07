@@ -30,3 +30,10 @@ npm run prod
 
 #### To do
 Extract critical CSS
+
+
+### Guide
+<details>
+  <summary>How to enqueue scripts</summary>
+  To enqueue scripts, create your script with a custom name in webpack.config.json <b>entry array</b> , and then add it to enqueue in functions.php "add_theme_assets" function using the "wordpack_load_chunk" function passing the name you choose as parameter. Be sure to use a conditional like is_home() or is_page()
+</details>
