@@ -54,7 +54,7 @@ add_filter('script_loader_tag', 'wordpack_defer_scripts', 10, 2);
  * Async styles
  */
 function wordpack_async_styles($tag, $handle) {
-  $include = ["main"];
+  $include = [];
   if(in_array($handle, $include)){
     $tag = str_replace(" media='all'", ' media="print" onload="this.media=\'all\'" ', $tag);
   }
@@ -105,4 +105,21 @@ function wordpack_ajax($ajax_name, $key){
 	// wp_register_script( 'my-ajax-nonce-script', '' );
 	// wp_enqueue_script( 'my-ajax-nonce-script' );
 	// wp_add_inline_script( 'my-ajax-nonce-script', 'const MY_ACTION_NONCE = "'.wp_create_nonce('MY_NONCE_KEY').'"');
+}
+
+
+/**
+ * 
+ * Check if is in dev
+ */
+function wordpack_is_dev()
+{
+  // check if is in localhost and debug is true
+	$whitelist = array(
+		'127.0.0.1',
+		'::1'
+	);
+	if (WP_DEBUG && in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
+		return true;
+	}
 }

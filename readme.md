@@ -28,8 +28,8 @@ npm run prod
 📑 Clean wordpress scripts and emoji tags<br>
 🥞 THEMEPATH and AJAX_URL variables<br>
 🍬 Clean and editable structure<br>
-🧩 Example of secure Ajax with nonce
-🎃 Cache bust script and styles enqueued
+🧩 Example of secure Ajax with nonce<br>
+🎃 Cache bust script and styles enqueued<br>
 
 #### To do
-Extract critical Css
+Extract critical CSS
