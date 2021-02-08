@@ -1,31 +1,25 @@
 {
-  "css": {
-    "styles": [],
-    "scripts": [
-      "../js/css.bundle.js"
-    ]
-  },
   "homepage": {
     "styles": [],
     "scripts": [
-      "../js/755.bundle.js",
-      "../js/286.bundle.js",
+      "../js/vendor-node_modules_jquery_dist_jquery_js.bundle.js",
+      "../js/src_js_myfunction_js.bundle.js",
       "../js/homepage.bundle.js"
     ]
   },
   "page_1": {
     "styles": [],
     "scripts": [
-      "../js/755.bundle.js",
-      "../js/329.bundle.js",
-      "../js/286.bundle.js",
+      "../js/vendor-node_modules_jquery_dist_jquery_js.bundle.js",
+      "../js/vendor-node_modules_swiper_esm_components_core_core-class_js.bundle.js",
+      "../js/src_js_myfunction_js.bundle.js",
       "../js/page_1.bundle.js"
     ]
   },
   "page_2": {
     "styles": [],
     "scripts": [
-      "../js/286.bundle.js",
+      "../js/src_js_myfunction_js.bundle.js",
       "../js/page_2.bundle.js"
     ]
   }

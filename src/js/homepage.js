@@ -7,7 +7,7 @@ hola();
 var container = document.getElementById("container");
 var content = document.createElement("span");
 content.style.color = "red";
-content.innerHTML = "Hello";
+content.innerHTML = "Hello asd000aa";
 container.appendChild(content);
 
 $.ajax({

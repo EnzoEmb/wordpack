@@ -2,6 +2,9 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ChunksWebpackPlugin = require('chunks-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+
+
 
 module.exports = {
     // webpack optimization mode
@@ -34,6 +37,22 @@ module.exports = {
             generateChunksManifest: true,
             generateChunksFiles: false,
         }),
+        new BrowserSyncPlugin({
+          // browse to http://localhost:3000/ during development,
+          // ./public directory is being served
+        // host: 'wordpack.test',
+        // port: 3000,
+        //   host: 'wordpack.test',
+        //   port: 3000,
+        //   server: { baseDir: ['./wp-content'] }
+          proxy: "wordpack.test",
+        },
+        // {
+          // prevent BrowserSync from reloading the page
+          // and let Webpack Dev Server take care of this
+        //   reload: false
+        // }
+        )
     ],
 
 
