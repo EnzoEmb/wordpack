@@ -22,6 +22,7 @@ function add_theme_assets()
   // }
 	// wp_enqueue_script( 'custom_js',  get_template_directory_uri().'/dist/app.js', array() );
 	wp_enqueue_script( 'custom_js',  'http://localhost:8080/app.js', array() );
+	// wp_enqueue_script( 'custom_js',  'http://localhost:8080/app.js', array() );
 
 
 

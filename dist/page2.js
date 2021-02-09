@@ -2,24 +2,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./dev/app.js":
-/*!********************!*\
-  !*** ./dev/app.js ***!
-  \********************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ "./dev/page2.js":
+/*!**********************!*\
+  !*** ./dev/page2.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _test_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test.js */ "./dev/test.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/core/core-class.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
-/* module decorator */ module = __webpack_require__.hmd(module);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/core/core-class.js");
 
-
-
-(0,_test_js__WEBPACK_IMPORTED_MODULE_0__.write)();
-(0,_test_js__WEBPACK_IMPORTED_MODULE_0__.changeH1)('holaasdasd asdasd');
-var swiper = new swiper__WEBPACK_IMPORTED_MODULE_2__.default('.swiper-container', {
+var swiper = new swiper__WEBPACK_IMPORTED_MODULE_0__.default('.swiper-container', {
   // Optional parameters
   direction: 'vertical',
   loop: true,
@@ -37,34 +29,6 @@ var swiper = new swiper__WEBPACK_IMPORTED_MODULE_2__.default('.swiper-container'
     el: '.swiper-scrollbar'
   }
 });
-if (module && module.hot) module.hot.accept();
-
-/***/ }),
-
-/***/ "./dev/test.js":
-/*!*********************!*\
-  !*** ./dev/test.js ***!
-  \*********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "write": () => (/* binding */ write),
-/* harmony export */   "changeH1": () => (/* binding */ changeH1)
-/* harmony export */ });
-function write() {
-  //Create the element using the createElement method.
-  var myDiv = document.createElement("div"); //Set its unique ID.
-
-  myDiv.id = 'div_id'; //Add your content to the DIV
-
-  myDiv.innerHTML = "<h1>Hello World! asdas ddasdasds</h1>"; //Finally, append the element to the HTML body
-
-  document.body.appendChild(myDiv);
-}
-function changeH1(text) {
-  document.querySelector('h1').innerText = text;
-}
 
 /***/ })
 
@@ -81,16 +45,13 @@ function changeH1(text) {
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -103,18 +64,6 @@ function changeH1(text) {
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {};
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -124,21 +73,6 @@ function changeH1(text) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/harmony module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.hmd = (module) => {
-/******/ 			module = Object.create(module);
-/******/ 			if (!module.children) module.children = [];
-/******/ 			Object.defineProperty(module, 'exports', {
-/******/ 				enumerable: true,
-/******/ 				set: () => {
-/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
-/******/ 				}
-/******/ 			});
-/******/ 			return module;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -166,11 +100,11 @@ function changeH1(text) {
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/app": 0
+/******/ 			"/page2": 0
 /******/ 		};
 /******/ 		
 /******/ 		var deferredModules = [
-/******/ 			["./dev/app.js","vendor-node_modules_swiper_esm_components_core_core-class_js","vendor-node_modules_jquery_dist_jquery_js"]
+/******/ 			["./dev/page2.js","vendor-node_modules_swiper_esm_components_core_core-class_js"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		

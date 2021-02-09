@@ -1,0 +1,17 @@
+{
+  "/app": {
+    "styles": [],
+    "scripts": [
+      "/vendor-node_modules_swiper_esm_components_core_core-class_js.js",
+      "/vendor-node_modules_jquery_dist_jquery_js.js",
+      "//app.js"
+    ]
+  },
+  "/page2": {
+    "styles": [],
+    "scripts": [
+      "/vendor-node_modules_swiper_esm_components_core_core-class_js.js",
+      "//page2.js"
+    ]
+  }
+}
