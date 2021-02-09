@@ -2,10 +2,9 @@
 # BACKLOG
 
 - [x] Move config files to wordpack folder
-- [ ] Create 404 design
-- [ ] Separate sass build from webpack
-- [ ] Extract critical css into a folder and inject them if they exists w/ php
-- [ ] Zip theme command
+- [x] Create 404 design
+- [ ] Extract CRITICAL CSS into a folder and inject them if they exists w/ php and lazy load the css
+- [ ] ZIP theme command
 - [x] IMAGES: Fix mirror subfolders images
 - [ ] IMAGES: Build command without watch of images
 - [ ] IMAGES: Chalkify images
@@ -16,7 +15,8 @@
 - [ ] WEBPACK: clean unused packages
 - [ ] CSS: style lint
 - [ ] CSS: autoprefix
-- [ ] browsersync
+- [ ] POT file generator
+- [ ] Remove unused package.jsons
 
 # FUTURE
 - [ ] IMAGES: Resize images

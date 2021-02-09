@@ -5,16 +5,19 @@
   "main": "src/js/homepage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch:webpack": "webpack --watch --config ./wordpack/webpack.config.js",
+
+    "watch": "npm-run-all --parallel watch:mix watch:images",
+    "watch:mix": "npx mix watch",
     "watch:images": "node ./wordpack/image.config.js --watch",
-    "watch:css": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js src/sass/ -o ./assets/css/ --output-style expanded -w",
-    "watch": "npm-run-all --parallel watch:webpack watch:images watch:css",
-    "prod": "npm-run-all --parallel prod:js prod:css prod:images",
-    "prod:js": "cross-env NODE_ENV=production webpack --config ./wordpack/webpack.config.js",
-    "prod:css": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js src/sass/ -o ./assets/css/ --output-style compressed",
+
+    "prod": "npm-run-all --parallel prod:js prod:images",
+    "prod:mix": "npx mix",
     "prod:images": "node ./wordpack/image.config.js",
-    "critical:css": "",
-    "zip:theme": ""
+
+    "critical": "",
+    "zip:theme": "",
+    "zip:all": "",
+    "pot": ""
   },
   "repository": {
     "type": "git",
