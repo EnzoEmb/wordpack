@@ -13,6 +13,7 @@ if (args.includes('--watch')) {
 }
 
 
+
 if (IS_WATCH) {
   chokidar.watch(SRC_FOLDER).on('add', (event, path) => {
     optimizeImage(event);
@@ -21,10 +22,25 @@ if (IS_WATCH) {
   chokidar.watch(SRC_FOLDER).on('unlink', (event, path) => {
     removeImage(event);
   });
-}else{
+  chokidar.watch(SRC_FOLDER).on('unlinkDir', (event, path) => {
+    removeFolder(event);
+  });
+
+} else {
 
   // process all images from src without chokidar
 
+}
+
+
+
+function removeFolder(path) {
+
+  var mirror_folder = path.replace('src', 'assets')
+
+  if (fs.existsSync(mirror_folder)) {
+    fs.rmdirSync(mirror_folder, { recursive: true })
+  }
 }
 
 
@@ -84,23 +100,26 @@ function removeImage(path) {
 
   // fs.unlinkSync('./assets/img/'+file);
   // fs.unlinkSync('./assets/img/'+filename_without_extension+'webp');
+  if (fs.existsSync(OUTPUT_FOLDER + file_with_folder)) {
+    fs.unlink(OUTPUT_FOLDER + file_with_folder, (err) => {
+      if (err) {
+        console.error(err)
+        return
+      }
 
-  fs.unlink(OUTPUT_FOLDER + file_with_folder, (err) => {
-    if (err) {
-      console.error(err)
-      return
-    }
+      console.log('Removed', file);
+    })
+  }
 
-    console.log('Removed', file);
-  })
+  if (fs.existsSync(OUTPUT_FOLDER + folder + '/' + filename_without_extension + '.webp')) {
+    fs.unlink(OUTPUT_FOLDER + folder + '/' + filename_without_extension + '.webp', (err) => {
+      if (err) {
+        console.error(err)
+        return
+      }
 
-  fs.unlink(OUTPUT_FOLDER + folder + '/' + filename_without_extension + '.webp', (err) => {
-    if (err) {
-      console.error(err)
-      return
-    }
-
-    console.log('Removed', filename_without_extension + '.webp');
-  })
+      console.log('Removed', filename_without_extension + '.webp');
+    })
+  }
 
 }
