@@ -1,7 +1,8 @@
-// @import "~bootstrap";
+// Vendors
+@import "~bootstrap";
 
-
+// Imports
+@import "src/page_404";
 body{
-  background: linear-gradient(#e98a00, #f5aa2f); 
-  user-select: none;
+  font-family: 'Inter', sans-serif;
 }
