@@ -1,40 +1,41 @@
 let mix = require('laravel-mix');
 let webpack = require('webpack');
-const ChunksWebpackPlugin = require('chunks-webpack-plugin');
+// const ChunksWebpackPlugin = require('chunks-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-mix.js('dev/app.js', 'dist')
-mix.js('dev/page2.js', 'dist')
-// mix.extract();
-// mix.version();
-// mix.publicPath: 'dist/',
-mix.setPublicPath('dist')
+mix.js('src/js/homepage.js', 'js')
+mix.js('src/js/page_1.js', 'js')
+// mix.js('src/js/page_2.js', 'js')
+
+mix.sass('src/sass/app.scss', 'css');
+
+
+mix.setPublicPath('assets')
 
 mix.webpackConfig({
   plugins: [
-    
-    new ChunksWebpackPlugin({
-      generateChunksManifest: true,
-      generateChunksFiles: false,
-  }),
+
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*', '!img'],
+    }),
+    //     new ChunksWebpackPlugin({
+    //       generateChunksManifest: true,
+    //       generateChunksFiles: false,
+    //     }),
   ],
-  optimization: {
-      splitChunks: {
-          // name: '[name].chunks',
-          // name: false,
-          chunks: 'all',
-          minChunks: 1,
-          minSize: 0,
-          cacheGroups: {
-              vendor: {
-                  test: /[\\/]node_modules[\\/]/,
-                  chunks: 'all',
-                  // name: 'vendor',
-                  // enforce: true,
-                  // minChunks: 3
-              }
-          }
-      },
-  },
+  //   optimization: {
+  //     splitChunks: {
+  //       chunks: 'all',
+  //       minChunks: 1,
+  //       minSize: 0,
+  //       cacheGroups: {
+  //         vendor: {
+  //           test: /[\\/]node_modules[\\/]/,
+  //           chunks: 'all',
+  //         }
+  //       }
+  //     },
+  //   },
 });
 
 // mix.disableSuccessNotifications();
