@@ -10,16 +10,20 @@ function add_theme_assets()
 {
 
 	// enqueue style
-	$last_time_modified_style = date("ymd-Gis", filemtime(get_template_directory() . '/assets/css/app.min.css'));
-	wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/app.min.css', array(), $last_time_modified_style);
+	// $last_time_modified_style = date("ymd-Gis", filemtime(get_template_directory() . '/assets/css/app.min.css'));
+	// wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/app.min.css', array(), $last_time_modified_style);
 
-	// enqueue chunks conditionally
-  if(is_home()){
-    wordpack_load_chunk('homepage');
-  }
-  if(is_page(5)){
-    wordpack_load_chunk('page_2');
-  }
+	// // enqueue chunks conditionally
+  // if(is_home()){
+  //   wordpack_load_chunk('homepage');
+  // }
+  // if(is_page(5)){
+  //   wordpack_load_chunk('page_2');
+  // }
+	// wp_enqueue_script( 'custom_js',  get_template_directory_uri().'/dist/app.js', array() );
+	wp_enqueue_script( 'custom_js',  'http://localhost:8080/app.js', array() );
+
+
 
 	// add inline script w/ ajax nonce
 	wordpack_ajax('MY_AJAX_NAME', 'MY_NONCE_KEY');
