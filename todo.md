@@ -8,9 +8,8 @@
 - [x] IMAGES: Fix mirror subfolders images
 - [ ] IMAGES: Build command without watch of images
 - [ ] IMAGES: Chalkify images
-- [ ] IMAGES: Remove unused images from images
-- [ ] IMAGES: Remove unlinked folders
-- [ ] IMAGES: Dont process if image already exists
+- [x] IMAGES: Remove unlinked folders
+- [x] IMAGES: Dont process if image already exists
 - [ ] WEBPACK: esLint
 - [ ] WEBPACK: clean unused packages
 - [ ] CSS: style lint

@@ -72,17 +72,21 @@ function optimizeImage(path) {
 
 
   // Convert to .webp
-  i.toFormat('webp', { quality: 50 })
-  i.toFile(OUTPUT_FOLDER + file_without_extension + '.webp')
-    .then(() => console.log('Converted', file, 'to WEBP'))
-    .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+  if (!fs.existsSync(OUTPUT_FOLDER + file_without_extension + '.webp')) {
+    i.toFormat('webp', { quality: 50 })
+    i.toFile(OUTPUT_FOLDER + file_without_extension + '.webp')
+      .then(() => console.log('Converted', file, 'to WEBP'))
+      .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+  }
 
 
   // Optimize same format
-  i.toFormat(extension, { quality: 50 })
-  i.toFile(OUTPUT_FOLDER + file_with_folder)
-    .then(() => console.log('Optimized', file))
-    .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+  if (!fs.existsSync(OUTPUT_FOLDER + file_with_folder)) {
+    i.toFormat(extension, { quality: 50 })
+    i.toFile(OUTPUT_FOLDER + file_with_folder)
+      .then(() => console.log('Optimized', file))
+      .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+  }
 
 
 
