@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { readdirSync } = require('fs')
+const path = require('path');
 const sharp = require('sharp');
 const chokidar = require('chokidar');
 
@@ -29,8 +31,49 @@ if (IS_WATCH) {
 } else {
 
   // process all images from src without chokidar
+  // processFolder(SRC_FOLDER);
+  walkDir(SRC_FOLDER, function(filePath) {
+
+    optimizeImage(filePath)
+    
+
+
+  });
+  
+
 
 }
+
+
+// function processFolder(folder) {
+
+//   fs.readdir(folder, (err, files) => {
+//     // console.log(files);
+//     files.forEach(file => {
+//       if (!fs.statSync(folder + '/' + file).isDirectory()) {
+
+//         optimizeImage(folder + file);
+//         // console.log(file);
+//       } else {
+//         processFolder(file)
+//         // console.log(file)
+
+//       }
+//     });
+//   });
+// }
+
+
+function walkDir(dir, callback) {
+  fs.readdirSync(dir).forEach( f => {
+    let dirPath = path.join(dir, f);
+    let isDirectory = fs.statSync(dirPath).isDirectory();
+    isDirectory ? 
+      walkDir(dirPath, callback) : callback(path.join(dir, f));
+  });
+};
+
+
 
 
 

@@ -16,6 +16,7 @@
 - [ ] CSS: autoprefix
 - [ ] POT file generator
 - [ ] Remove unused package.jsons
+- [ ] JS cache bust versioning 
 
 # FUTURE
 - [ ] IMAGES: Resize images
