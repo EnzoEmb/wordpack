@@ -5,15 +5,12 @@
   "main": "src/js/homepage.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "watch": "npm-run-all --parallel watch:mix watch:images",
     "watch:mix": "npx mix watch",
     "watch:images": "node ./wordpack/image.config.js --watch",
-
     "prod": "npm-run-all --parallel prod:js prod:images",
     "prod:mix": "npx mix",
     "prod:images": "node ./wordpack/image.config.js",
-
     "critical": "",
     "zip:theme": "",
     "zip:all": "",
@@ -35,6 +32,7 @@
     "autoprefixer": "^10.2.4",
     "babel-loader": "^8.2.2",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "chalk": "^2.4.2",
     "chokidar": "^3.5.1",
     "chunks-webpack-plugin": "^7.0.1",
     "clean-webpack-plugin": "^3.0.0",

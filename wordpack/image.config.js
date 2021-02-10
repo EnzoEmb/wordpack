@@ -1,8 +1,9 @@
 const fs = require('fs');
-const { readdirSync } = require('fs')
+// const { readdirSync } = require('fs')
 const path = require('path');
 const sharp = require('sharp');
 const chokidar = require('chokidar');
+const chalk = require('chalk');
 
 const SRC_FOLDER = './src/img/';
 const OUTPUT_FOLDER = './assets/img/';
@@ -32,14 +33,14 @@ if (IS_WATCH) {
 
   // process all images from src without chokidar
   // processFolder(SRC_FOLDER);
-  walkDir(SRC_FOLDER, function(filePath) {
+  walkDir(SRC_FOLDER, function (filePath) {
 
     optimizeImage(filePath)
-    
+
 
 
   });
-  
+
 
 
 }
@@ -65,10 +66,10 @@ if (IS_WATCH) {
 
 
 function walkDir(dir, callback) {
-  fs.readdirSync(dir).forEach( f => {
+  fs.readdirSync(dir).forEach(f => {
     let dirPath = path.join(dir, f);
     let isDirectory = fs.statSync(dirPath).isDirectory();
-    isDirectory ? 
+    isDirectory ?
       walkDir(dirPath, callback) : callback(path.join(dir, f));
   });
 };
@@ -118,8 +119,8 @@ function optimizeImage(path) {
   if (!fs.existsSync(OUTPUT_FOLDER + file_without_extension + '.webp')) {
     i.toFormat('webp', { quality: 50 })
     i.toFile(OUTPUT_FOLDER + file_without_extension + '.webp')
-      .then(() => console.log('Converted', file, 'to WEBP'))
-      .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+      .then(() => console.log(chalk.bgGreen.black('Converted'), file, 'to WEBP'))
+      .catch(e => console.log(chalk.bgRed.black('Failed converting'), file, e, 'skipping...'))
   }
 
 
@@ -127,8 +128,8 @@ function optimizeImage(path) {
   if (!fs.existsSync(OUTPUT_FOLDER + file_with_folder)) {
     i.toFormat(extension, { quality: 50 })
     i.toFile(OUTPUT_FOLDER + file_with_folder)
-      .then(() => console.log('Optimized', file))
-      .catch(e => console.log('Failed converting', file, e, 'skipping...'))
+      .then(() => console.log(chalk.bgGreen.black('Optimized'), file))
+      .catch(e => console.log(chalk.bgRed.black('Failed converting'), file, e, 'skipping...'))
   }
 
 
