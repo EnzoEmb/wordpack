@@ -123,3 +123,15 @@ function wordpack_is_dev()
 		return true;
 	}
 }
+
+
+/**
+ * 
+ * Wordpack Image
+ */
+function wordpack_img($name, $alt){
+  if(file_exists(get_template_directory() . '/assets/img/' . $name)){
+    $url = get_template_directory_uri() . '/assets/img/' . $name;
+    return '<img src="'.$url.'" alt="'.$alt.'" />';
+  }
+}

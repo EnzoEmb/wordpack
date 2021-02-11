@@ -11,6 +11,7 @@
 - [x] IMAGES: Remove unlinked folders
 - [x] IMAGES: Dont process if image already exists
 - [ ] IMAGES: Function to include the optimized image
+- [ ] IMAGES: Resize images
 - [ ] WEBPACK: esLint
 - [ ] WEBPACK: clean unused packages
 - [ ] CSS: style lint
