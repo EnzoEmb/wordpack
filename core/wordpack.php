@@ -54,9 +54,9 @@ add_filter('script_loader_tag', 'wordpack_defer_scripts', 10, 2);
  * Async styles
  */
 function wordpack_async_styles($tag, $handle) {
-  $include = [];
+  $include = ["main", "wp-block-library"];
   if(in_array($handle, $include)){
-    $tag = str_replace(" media='all'", ' media="print" onload="this.media=\'all\'" ', $tag);
+    $tag = str_replace(" media='all'", ' media="print" onload="this.media=\'all\'; this.onload=null;"', $tag);
   }
   return $tag;
   
@@ -130,8 +130,25 @@ function wordpack_is_dev()
  * Wordpack Image
  */
 function wordpack_img($name, $alt){
-  if(file_exists(get_template_directory() . '/assets/img/' . $name)){
-    $url = get_template_directory_uri() . '/assets/img/' . $name;
-    return '<img src="'.$url.'" alt="'.$alt.'" />';
+  $file_path = get_template_directory() . '/assets/img/' . $name;
+  $file_type = mime_content_type($file_path);
+  $file_name = pathinfo($name, PATHINFO_FILENAME);;
+  $file_path_webp = get_template_directory() . '/assets/img/' . $file_name . '.webp';
+  $file_size = getimagesize($file_path);
+
+
+
+  if(file_exists($file_path)){
+    $original_url = get_template_directory_uri() . '/assets/img/' . $name;
+    // return '<img src="'.$url.'" alt="'.$alt.'" />';
   }
+  if(file_exists($file_path_webp)){
+    $webp_url = get_template_directory_uri() . '/assets/img/' . $file_name . '.webp';
+  }
+  
+  return '<picture>
+  '.($webp_url ? '<source srcset="'.$webp_url.'" type="image/webp">' : '').'
+  '.($original_url ? '<source srcset="'.$original_url.'" type="'.$file_type.'"> ' : '').'
+  '.($original_url ? '<img src="'.$original_url.'" '.$file_size[3].'>' : '').'
+  </picture>';
 }

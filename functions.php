@@ -13,6 +13,7 @@ function add_theme_assets()
 	$last_time_modified_style = date("ymd-Gis", filemtime(get_template_directory() . '/assets/css/app.css'));
 	wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/app.css', array(), $last_time_modified_style);
 
+
 	// // enqueue chunks conditionally
   // if(is_home()){
   //   wordpack_load_chunk('homepage');
