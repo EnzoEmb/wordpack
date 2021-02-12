@@ -49,8 +49,8 @@ npm run prod:mix
 
 ### Guide
 <details>
-  <summary>How to enqueue scripts?</summary>
-  To enqueue scripts, create an entry on webpack.config.js and then enqueue it on functions.php using the wordpack_load_chunk function with the same name as the entry, be sure to use a conditional when enqueuing it.
+  <summary>How to add a new page script?</summary>
+  Create a .js file in src/js and add a new line in the JS section in webpack.mix.js then enqueue it in functions.php using the wordpack_load_chunk(JS_NAME) function
 </details>
 <details>
   <summary>How does the image optimization works?</summary>
