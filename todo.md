@@ -10,12 +10,13 @@
 - [x] IMAGES: Chalkify images
 - [x] IMAGES: Remove unlinked folders
 - [x] IMAGES: Dont process if image already exists
-- [ ] IMAGES: Function to include the optimized image
+- [x] IMAGES: Function to include the optimized image
 - [ ] IMAGES: Resize images
 - [ ] WEBPACK: esLint
 - [ ] WEBPACK: clean unused packages
-- [ ] CSS: style lint
-- [ ] CSS: autoprefix
+- [ ] WEBPACK: babel
+- [x] CSS: style lint
+- [x] CSS: autoprefix
 - [ ] POT file generator
 - [ ] Remove unused package.jsons
 - [ ] JS cache bust versioning 

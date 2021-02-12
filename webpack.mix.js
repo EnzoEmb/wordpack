@@ -12,7 +12,6 @@ mix.js('src/js/homepage.js', 'js')
 mix.js('src/js/page_1.js', 'js')
 mix.js('src/js/page_2.js', 'js')
 
-
 /**
  * 
  * SASS
