@@ -11,10 +11,8 @@
     "prod": "npm-run-all --parallel prod:js prod:images",
     "prod:mix": "npx mix",
     "prod:images": "node ./wordpack/image.config.js",
-    "critical": "",
-    "zip:theme": "",
-    "zip:all": "",
-    "pot": ""
+    "critical": "node ./wordpack/critical.config.js",
+    "zip": "node ./wordpack/archiver.config.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +25,7 @@
   },
   "homepage": "https://github.com/EnzoEmb/wordpack#readme",
   "devDependencies": {
+    "archiver": "^5.2.0",
     "chalk": "^2.4.2",
     "chokidar": "^3.5.1",
     "chunks-webpack-plugin": "^7.0.1",

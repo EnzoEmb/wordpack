@@ -31,6 +31,9 @@ npm run prod:images
 # Run webpack js and css
 npm run prod:mix
 
+# Zip theme
+npm run zip
+
 
 ```
 </details>
