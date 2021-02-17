@@ -77,15 +77,16 @@ function wordpack_load_chunk($chunk_name){
 
   $last_time_modified_manifest  = date("ymd-Gis", filemtime(get_template_directory() . '/assets/chunks-manifest.json'));
 
-
-  foreach ($my_chunks as $key => $value) {
-    wp_enqueue_script(
-      $chunk_name.'-'.$key,
-      get_template_directory_uri() . '/assets/'. substr($value, 2),
-      null,
-      $last_time_modified_manifest,
-      true
-    );
+  if($my_chunks){
+    foreach ($my_chunks as $key => $value) {
+      wp_enqueue_script(
+        $chunk_name.'-'.$key,
+        get_template_directory_uri() . '/assets/'. substr($value, 2),
+        null,
+        $last_time_modified_manifest,
+        true
+      );
+    }
   }
 }
 
