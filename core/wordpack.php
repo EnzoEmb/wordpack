@@ -13,7 +13,7 @@ function wordpack_disable_emojis() {
 	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 	
 	// Remove from TinyMCE
-	add_filter( 'tiny_mce_plugins', 'wordpack_disable_emojis_tinymce' );
+	// add_filter( 'tiny_mce_plugins', 'wordpack_disable_emojis_tinymce' );
 }
 add_action( 'init', 'wordpack_disable_emojis' );
 
@@ -37,6 +37,7 @@ add_action( 'wp_footer', 'wordpack_disable_embed_js' );
  * Defer scripts
  */
 function wordpack_defer_scripts($tag, $handle) {
+  if ( is_user_logged_in() ) return $tag;
   $exclude = [];
   if(!in_array($handle, $exclude)){
     $tag = str_replace(' src', ' defer src', $tag);
