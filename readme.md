@@ -39,6 +39,7 @@ npm run zip
 </details>
 
 ### Features
+🔥 Hot Module Reload on development<br>
 📦 Only serve the JS needed per page using webpack split chunks and conditional enqueuing<br>
 🧦 Put JS scripts in footer and defer<br>
 📂 Optimize images<br>

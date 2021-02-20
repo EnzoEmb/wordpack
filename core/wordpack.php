@@ -73,7 +73,6 @@ add_filter('style_loader_tag', 'wordpack_async_styles', 10, 2);
 function wordpack_load_style($style_name){
   $css_file = get_template_directory() . "/assets/css/" . $style_name. ".css";
   $hot_file = get_template_directory() . "/assets/hot";
-  $last_time_modified  = date("ymd-Gis", filemtime($css_file));
 
   if(file_exists($hot_file)){
     // load css from hmr servers
@@ -85,9 +84,11 @@ function wordpack_load_style($style_name){
     );
   }else{
     // load css file from assets
+    $css_file_url = get_template_directory_uri() . "/assets/css/" . $style_name. ".css";
+    $last_time_modified  = date("ymd-Gis", filemtime($css_file));
     wp_enqueue_style(
       $style_name,
-      $css_file,
+      $css_file_url,
       array(),
       $last_time_modified
     );
@@ -101,11 +102,10 @@ function wordpack_load_style($style_name){
  * Load the appropiate scripts for the specified route
  */
 function wordpack_load_script($chunk_name){
-  $manifest_chunks = get_template_directory() . "/assets/chunks-manifest.json";
-  $manifest_mix = get_template_directory() . "/assets/mix-manifest.json";
   $hot_file = get_template_directory() . "/assets/hot";
+
   if(file_exists($hot_file)){
-    // $manifest = json_decode(file_get_contents($manifest_mix), true);
+    // load javascript from hmr server
     wp_enqueue_script(
       "/js/".$chunk_name,
       'http://localhost:8080'. "/js/".$chunk_name.'.js',
@@ -114,12 +114,14 @@ function wordpack_load_script($chunk_name){
       true
     );
   }else{
+    // load javascript chunks
     
+    $manifest_chunks = get_template_directory() . "/assets/chunks-manifest.json";
 
     if(file_exists($manifest_chunks)){
       $chunks = file_get_contents( $manifest_chunks);
       $chunks_json = json_decode($chunks, true);
-      $my_chunks = $chunks_json[$chunk_name]["scripts"];
+      $my_chunks = $chunks_json['/js/'.$chunk_name]["scripts"];
 
       $last_time_modified_manifest  = date("ymd-Gis", filemtime(get_template_directory() . '/assets/chunks-manifest.json'));
 
@@ -127,7 +129,7 @@ function wordpack_load_script($chunk_name){
         foreach ($my_chunks as $key => $value) {
           wp_enqueue_script(
             $chunk_name.'-'.$key,
-            get_template_directory_uri() . '/assets/'. substr($value, 2),
+            get_template_directory_uri() . '/assets'. $value,
             null,
             $last_time_modified_manifest,
             true

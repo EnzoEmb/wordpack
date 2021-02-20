@@ -1,6 +1,6 @@
 let mix = require('laravel-mix');
-// const ChunksWebpackPlugin = require('chunks-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ChunksWebpackPlugin = require('chunks-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 mix.setPublicPath('assets')
 
@@ -24,30 +24,45 @@ mix.sass('src/sass/app.scss', 'css');
  * 
  * Webpack Config
  */
-mix.webpackConfig({
-  // plugins: [
-  //   new CleanWebpackPlugin({
-  //     cleanOnceBeforeBuildPatterns: ['**/*', '!img/**'],
-  //   }),
-  //   new ChunksWebpackPlugin({
-  //     generateChunksManifest: true,
-  //     generateChunksFiles: false,
-  //   }),
-  // ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     minChunks: 1,
-  //     minSize: 0,
-  //     cacheGroups: {
-  //       vendor: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         chunks: 'all',
-  //       }
-  //     }
-  //   },
-  // },
-});
+
+if (mix.inProduction()) {
+  
+  mix.webpackConfig({
+    plugins: [
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ['**/*', '!img/**'],
+      }),
+      new ChunksWebpackPlugin({
+        generateChunksManifest: true,
+        generateChunksFiles: false,
+      }),
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minChunks: 1,
+        minSize: 0,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+          }
+        }
+      },
+    },
+  });
+
+} else {
+
+  mix.webpackConfig({
+    plugins: [
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: ['**/*', '!img/**', '!hot'],
+      }),
+    ],
+  });
+
+}
 
 
 
