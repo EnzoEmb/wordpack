@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm-run-all --parallel watch:mix watch:images",
-    "watch:mix": "npx mix watch",
+    "watch:mix": "npx mix watch --hot",
     "watch:images": "node ./wordpack/image.config.js --watch",
-    "prod": "npm-run-all --parallel prod:js prod:images",
+    "prod": "npm-run-all --parallel prod:mix prod:images",
     "prod:mix": "npx mix",
     "prod:images": "node ./wordpack/image.config.js",
     "critical": "node ./wordpack/critical.config.js",

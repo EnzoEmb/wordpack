@@ -55,7 +55,7 @@ add_filter('script_loader_tag', 'wordpack_defer_scripts', 10, 2);
  * Async styles
  */
 function wordpack_async_styles($tag, $handle) {
-  $include = ["main", "wp-block-library"];
+  $include = ["wp-block-library"];
   if(in_array($handle, $include)){
     $tag = str_replace(" media='all'", ' media="print" onload="this.media=\'all\'; this.onload=null;"', $tag);
   }
@@ -65,29 +65,77 @@ function wordpack_async_styles($tag, $handle) {
 add_filter('style_loader_tag', 'wordpack_async_styles', 10, 2);
 
 
+/**
+ * 
+ * Load the styles
+ */
+
+function wordpack_load_style($style_name){
+  $css_file = get_template_directory() . "/assets/css/" . $style_name. ".css";
+  $hot_file = get_template_directory() . "/assets/hot";
+  $last_time_modified  = date("ymd-Gis", filemtime($css_file));
+
+  if(file_exists($hot_file)){
+    // load css from hmr servers
+    wp_enqueue_style(
+      $style_name,
+      'http://localhost:8080'. "/css/".$style_name.'.css',
+      array(),
+      null
+    );
+  }else{
+    // load css file from assets
+    wp_enqueue_style(
+      $style_name,
+      $css_file,
+      array(),
+      $last_time_modified
+    );
+  }
+
+}
 
 
 /**
  * 
  * Load the appropiate scripts for the specified route
  */
-function wordpack_load_chunk($chunk_name){  
-  $chunks = file_get_contents( get_template_directory() . "/assets/chunks-manifest.json");
-  $chunks_json = json_decode($chunks, true);
-  $my_chunks = $chunks_json[$chunk_name]["scripts"];
+function wordpack_load_script($chunk_name){
+  $manifest_chunks = get_template_directory() . "/assets/chunks-manifest.json";
+  $manifest_mix = get_template_directory() . "/assets/mix-manifest.json";
+  $hot_file = get_template_directory() . "/assets/hot";
+  if(file_exists($hot_file)){
+    // $manifest = json_decode(file_get_contents($manifest_mix), true);
+    wp_enqueue_script(
+      "/js/".$chunk_name,
+      'http://localhost:8080'. "/js/".$chunk_name.'.js',
+      null,
+      null,
+      true
+    );
+  }else{
+    
 
-  $last_time_modified_manifest  = date("ymd-Gis", filemtime(get_template_directory() . '/assets/chunks-manifest.json'));
+    if(file_exists($manifest_chunks)){
+      $chunks = file_get_contents( $manifest_chunks);
+      $chunks_json = json_decode($chunks, true);
+      $my_chunks = $chunks_json[$chunk_name]["scripts"];
 
-  if($my_chunks){
-    foreach ($my_chunks as $key => $value) {
-      wp_enqueue_script(
-        $chunk_name.'-'.$key,
-        get_template_directory_uri() . '/assets/'. substr($value, 2),
-        null,
-        $last_time_modified_manifest,
-        true
-      );
+      $last_time_modified_manifest  = date("ymd-Gis", filemtime(get_template_directory() . '/assets/chunks-manifest.json'));
+
+      if($my_chunks){
+        foreach ($my_chunks as $key => $value) {
+          wp_enqueue_script(
+            $chunk_name.'-'.$key,
+            get_template_directory_uri() . '/assets/'. substr($value, 2),
+            null,
+            $last_time_modified_manifest,
+            true
+          );
+        }
+      }
     }
+
   }
 }
 
